@@ -1,47 +1,68 @@
 
-**tabtk_xlsx**
+# tsv-utils: tools for manipulate tsv file.
 
-interface:
+Author: LEI ZHANG
 
-    $ tabtk_xlsx
-    Usage: tabtk_xlsx  <xlsx> <sheet:file_path> [<sheet:file_path>]
-    version: 0.0.1
- 
- benchmark and usage:
- 
-    $ time  tabtk_xlsx.py  ncbi.map.xlsx  ncbi:ncbi.map
-    real    2m47.532s
-    user    2m46.537s
-    sys     0m0.829s
+current version： `version：0.0.1-r2`
+
+### main commond line interface
+
+    $ tsv-utils
+
+
+    Usage:   tsv-utils <command> <arguments>
+    Version: 0.0.1-r2
     
-    $time  tabtk_xlsx  ncbi.map.xlsx  ncbi:ncbi.map
-    real    0m12.577s
-    user    0m11.980s
-    sys     0m0.582s
-  
-    $ tabtk_xlsx  taxonomy.xlsx  phylum:phylum.txt order:order.txt  genus:genus.txt species:species.txt
+    Command:
+          -- Combination
+             agg            combinate multi-file.
+             join           join tables with primery key.
+             tsv2xlsx       convert (multi-)tsv file to Excel file.
     
-**tabtk_join**
-
-interface:
-
-    $ tabtk_join
-    Usage: tabtk_join [options] [text ...]
-    Options:
-      -p CHAR  placehold for missing value, default: ['-'];
-      -v       print version number
-
-**tabtk_agg**
-
-interface:
+          -- Numeric data frame
+             rank           rank/merge for numeric table.
+             abundance      calculate relative abundance for numeric table.
+             norm           normalization with counts map and normalization
+                            factor for numeric table.
+             stand          standardization for numeric table.
+             melt           merge values with bin table file.
+             distribution   calculate bins feature distribution.
+             trim           trim rows using cutoff.(sum operation).
+             nfilter        filter using value with specied collum. op: >= | <= .
     
-    $ tabtk_agg
-    Usage: tabtk_agg [options] [label:text ...]
-    Options:
-      -k STR  the keys fields pattern: 1:2:3, default: [1];
-      -t STR  the titles for keys: key_1:key_2:key_3, default: [catalog];
-      -c INT  the target column default: [2];
-      -p CHAR placehold for missing value: default ['0'];
-      -i      ignore the head line;
-      -v      print version number
-
+          -- Editing
+             annotation     annotating specify collum with key/value(s) db.
+             links          transform annotation with links map and definitions.
+             associate      associate with links map.
+             definition     adding definition collum with key/value(s) db.
+             replace        replace specify collum elements with key/value(s) db.
+             reorder        reorder rows by specify key in specify collum.
+             subset         retrieve ids in/not in list file [row].
+             subcolumn      retrieve ids in/not in list file [collum].
+             collapse       collapse '\t' separator to specify delim.
+             add_headline   add headline.
+             groupline      add groupline.
+             placehold      fill empty cell with specify STR.
+             reshape        reshape and bin using map file.
+    
+          -- Matrix Operation
+             transpose      matrix transpose.
+             submatrix      submatrix by id.
+             matrix2tab     binary format.
+             matrix2melt    elements in submatrix using metadata.
+    
+          -- Summary
+             cut            print selected parts of lines.
+             bins           uniq/bin/summary.
+             uniq           unique specify collum and counts.
+             nlines         calculate lines of file.
+             stats          calculate stats for selected collum.
+             unpack         unpack the bins files.
+    
+          -- auxiliary utils.
+             view             View text file, ignor comments and blank lines.
+    
+    Licenced:
+    (c) 2018-2020 - LEI ZHANG
+    Logic Informatics Co.,Ltd.
+    zhanglei@logicinformatics.com
